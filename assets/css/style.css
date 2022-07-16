@@ -36,7 +36,6 @@ header{
 }
 
 .ba-card{
-    background-color: #778da9;
     margin: 10px;
     padding: 10px;
     width: 20em;
@@ -53,23 +52,30 @@ header{
     width: 96%;
     text-align: center;
     margin: 5px;
+    padding:10px;
 }
 
 .ba-search-btn{
     width: 96%;
     text-align: center;
-    background-color: var(--navy);
+    background-color: var(--light-blue);
     color: var(--beige);
     margin: 5px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
 }
 
-/* .ba-saved-search{
-    display: none;
+.ba-saved-search{
+    /* display: none; */
     width: 96%;
     text-align: center;
     background-color: var(--beige);
     margin: 5px;
-} */
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+}
 
 /* Search Results */
 .ba-output{
@@ -83,6 +89,37 @@ header{
     font-size: 1.5em;
 }
 
+.ba-todays-forecast{
+    border-style: solid;
+    border-color: var(--dark-blue);
+    border-width: 3px;
+    padding: 5px;
+}
+
+/* 5 day forecast */
+.five-day-title{
+    color: var(--dark-blue);
+    font-size: 1.5em;
+    margin-top: 40px;
+}
+.five-day-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.five-day-forecast{
+    background-color: var(--blue);
+    color: var(--beige);
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 18%;
+}
+.info{
+    margin: 10px;
+}
+
 /* Changes the search box to take up the full width at small screens */
 @media screen and (max-width: 768px){
     .card {
@@ -93,5 +130,14 @@ header{
 @media screen and (max-width: 768px){
     .row{
         flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 960px){
+    .five-day-cards{
+        flex-direction: column;
+    }
+    .five-day-forecast{
+        width: 96%;
     }
 }
