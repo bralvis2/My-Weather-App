@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title> My Weather App </title>
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+    <body>
+        <header>Weather Dashboard</header>
+
+        <main class="container main">
+            <div class="row">
+                <div class="card ba-card">
+                    <div class="card-body">
+                      <h5 class="card-title ba-search">Search for a City</h5>
+                      <form>
+                        <div class="form-group">
+                          <input type="search" class="form-control ba-input" placeholder="Enter City Name">
+                        </div>
+                        <button type="submit" class="btn btn-primary ba-search-btn">Search</button>
+                      </form>
+                      <!-- <button type="submit" class="btn btn-primary ba-saved-search" id="1">example 1</button>
+                      <button type="submit" class="btn btn-primary ba-saved-search" id="2">example 2</button>
+                      <button type="submit" class="btn btn-primary ba-saved-search" id="3">example 3</button>
+                      <button type="submit" class="btn btn-primary ba-saved-search" id="4"></button>
+                      <button type="submit" class="btn btn-primary ba-saved-search" id="5"></button>
+                      <button type="submit" class="btn btn-primary ba-saved-search" id="6"></button>
+                      <button type="submit" class="btn btn-primary ba-saved-search" id="7"></button>
+                      <button type="submit" class="btn btn-primary ba-saved-search" id="8"></button> -->
+                    </div>
+                </div>
+        
+                <div class="card ba-output">
+                    <div class="card-body">
+                      <h5 class="card-title ba-search-title">City Name & Date</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"> temp:</li>
+                      <li class="list-group-item"> Wind:</li>
+                      <li class="list-group-item"> Humidity:</li>
+                      <li class="list-group-item"> UV Index:</li>
+                    </ul>
+                  </div>
+
+            </div>
+        </main>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="./assets/js/script.js"></script>
+    </body>
+</html>
