@@ -1,46 +1,60 @@
-// WHEN I view current weather conditions for that city
-// https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-// https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-// WHEN I view the UV index
-// THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-// WHEN I view future weather conditions for that city
-// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city
+// Varibales from HTML to save weather searches 
+var searchInput = document.querySelector('.ba-input');
+var searchForm = document.querySelector('.search-form');
+var savedSearches = document.querySelector('.saved-searches');
 
-var apiKey = '7344374ea3fe4498fa47c9c1163936a6'
-var userSearch = "Austin"
-var weatherAPIUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
-var geoAPIurl=`http://api.openweathermap.org/geo/1.0/direct?q=${userSearch}&limit=5&appid=${apiKey}`
-// var testUrl = `http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${apiKey}`
-// Value from search form
-var lat;
-var lon;
+// Empty array to save searches in
+var searches = [];
 
-// document.getElementById("#searchTerm").value
-function getLatLon(){
+// function to render items as buttons
+function renderSearches(){
 
-fetch(geoAPIurl)
-.then(function(response){
-return response.json();
-}).then(function(data){
-    console.log(data);
-    console.log("lat",data[0].lat)
-    console.log("lon",data[0].lon)
-    lat = data[0].lat
-    lon = data[0].lon
-    currentForecast();
-})
-};
+for (var i = 0; i < searches.length; i++) {
+    var search = searches[i];
 
-function currentForecast(){
-fetch(weatherAPIUrl)
-.then(function(response){
-return response.json();
-}).then(function(data){
-    console.log(data);
-    // APPEND TO PAGE   
-})
-};
+    var btn = document.createElement('button');
+    btn.textContent = search;
+    btn.setAttribute('class','ba-saved-search', i);
 
+    savedSearches.appendChild(btn);
+}
+}
+
+// The function will run when the page loads
+function init() {
+    // Get stored searches from local storage
+    var storedSearches = JSON.parse(localStorage.getItem("searches"));
+    
+    if (storedSearches !== null){
+        searches = storedSearches;
+    }
+     
+renderSearches();
+}
+
+// stringify and set key in local storage to searches array
+function storeSearches(){
+    localStorage.setItem("searches", JSON.stringify(searches));
+}
+
+// add submit event to form
+searchForm.addEventListener('submit', function(event) {
+
+    var searchText = searchInput.value.trim();
+
+    // console log if no text was entered 
+    if (searchText === "") {
+        console.log('No city name was enetred.');
+    return;
+    }
+
+    searches.push(searchText);
+    searchInput.value = "";
+
+    // store updated seaches in local storage, re-render the buttons
+    storeSearches();
+    renderSearches();
+} );
+
+// calls init function to retrieve data dn render it to the page on load.
+init();
