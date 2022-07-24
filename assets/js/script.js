@@ -3,6 +3,11 @@ var searchInput = document.querySelector('.ba-input');
 var searchForm = document.querySelector('.search-form');
 var savedSearches = document.querySelector('.saved-searches');
 var searchValue = document.querySelector('#search');
+var title = document.querySelector('.ba-search-title')
+var todaysWeather = document.querySelector('.ba-todays-forecast');
+
+// Current Date using Moment
+var currentDate = moment().format('dddd, MMMM Do, h:mm a');
 
 // Empty array to save searches in
 var searches = [];
@@ -75,10 +80,12 @@ function cityCoords(city) {
             // console.log(data.coord)
             currentForecast(data.coord.lat, data.coord.lon);
         })
+    todaysWeather.style.display = 'block';
+    title.innerHTML = `Weather in ${city} on ${currentDate}`;
 }
 
 function currentForecast(lat, lon) {
-    console.log(lat,lon)
+    console.log(lat, lon)
     var currentForeAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial&exclude=minutely,hourly`;
     fetch(currentForeAPI)
         .then(function (response) {
@@ -87,12 +94,19 @@ function currentForecast(lat, lon) {
             console.log(data);
             renderForecast(data);
         })
+
 }
 
-function renderForecast (data){
+function renderForecast(data) {
     var temp = document.querySelector('.temp');
+    var wind = document.querySelector('.wind');
+    var humidity = document.querySelector('.humidity');
+    var uvIndex = document.querySelector('.uvi');
     console.log(data)
-    temp.innerHTML = `temp: ${data.current.temp}`
+    temp.innerHTML = `Temp: ${data.current.temp}`;
+    wind.innerHTML = `Wind: ${data.current.wind_speed}`;
+    humidity.innerHTML = `Humidity: ${data.current.humidity}`;
+    uvIndex.innerHTML = `UV Index: ${data.current.uvi}`
 }
 
 

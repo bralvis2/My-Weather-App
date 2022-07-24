@@ -90,6 +90,7 @@ header{
 }
 
 .ba-todays-forecast{
+    display: none;
     border-style: solid;
     border-color: var(--dark-blue);
     border-width: 3px;
