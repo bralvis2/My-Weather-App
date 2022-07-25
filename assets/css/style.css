@@ -98,6 +98,10 @@ header{
 }
 
 /* 5 day forecast */
+.hide{
+    display: none;
+}
+
 .five-day-title{
     color: var(--dark-blue);
     font-size: 1.5em;
