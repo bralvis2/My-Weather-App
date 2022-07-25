@@ -108,6 +108,7 @@ function currentForecast(lat, lon) {
             renderForecast(data);
             renderFiveDayForecast(data);
             weatherEmoji(data)
+            uniColor(data);
         })
 
 }
@@ -211,6 +212,20 @@ function weatherEmoji(data){
 
 }
  
+//UV Index Color Indicator
+var favorable = '🟢';
+var moderate = '🟡';
+var severe = '🔴';
+
+function uniColor(data) {
+    var uvi = document.querySelector('.uvi');
+    if (data.current.uvi < 2){
+        uvi.innerHTML = `UV Index: ${data.current.uvi} ${favorable}`
+    } else if (data.current.uvi > 11){
+        uvi.innerHTML = `UV Index: ${data.current.uvi} ${severe}`
+    } else (uvi.innerHTML = `UV Index: ${data.current.uvi} ${moderate}`)
+
+}
 
 
 
